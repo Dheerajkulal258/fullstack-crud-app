@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Item Manager</title>
+  <style>
+   body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #74ebd5, #acb6e5);
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.item {
+  background: white;
+  padding: 12px;
+  margin: 10px auto;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  
+  /* ✨ Animation */
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.delete {
+  background: red;
+  color: white;
+}
+
+button:not(.delete) {
+  background: #4CAF50;
+  color: white;
+}
+
+/* Loader animation */
+#loader p {
+  font-size: 18px;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+  </style>
+</head>
+<body>
+
+<h1>🛒 Item Manager</h1>
+<div id="loader" style="display:none; text-align:center;">
+  <p>Loading...</p>
+</div>
+<form id="itemForm">
+  <input type="hidden" id="itemId">
+
+  <input type="text" id="name" placeholder="Name" required>
+  <input type="number" id="quantity" placeholder="Quantity" required>
+  <input type="number" id="price" placeholder="Price" required>
+
+  <button type="submit">Save Item</button>
+</form>
+
+<div id="itemList"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
